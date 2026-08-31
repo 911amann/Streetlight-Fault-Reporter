@@ -70,7 +70,7 @@ Run the application:
 
 python app.py
 
-Open The Link : http://127.0.0.1:5000
+
 
 Then open the address shown by Flask in a web browser.
 
