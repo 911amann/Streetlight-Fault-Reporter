@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maintenance Queue</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Maintenance Queue</h1>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/report">Report Fault</a>
+    <a href="/poles">Pole Tracking</a>
+    <a href="/queue">Maintenance Queue</a>
+    <a href="/areas">Area Reports</a>
+</nav>
+
+<div class="container">
+
+    <h2>Pending Maintenance</h2>
+
+    <p>
+        High priority faults are shown first so that
+        important repairs can be handled earlier.
+    </p>
+
+    <table>
+
+        <tr>
+            <th>Report ID</th>
+            <th>Pole</th>
+            <th>Area</th>
+            <th>Problem</th>
+            <th>Severity</th>
+            <th>Priority</th>
+            <th>Status</th>
+        </tr>
+
+        {% for record in records %}
+
+        <tr>
+
+            <td>{{ record.id }}</td>
+            <td>{{ record.pole }}</td>
+            <td>{{ record.area }}</td>
+            <td>{{ record.problem }}</td>
+            <td>{{ record.severity }}</td>
+            <td>{{ record.priority }}</td>
+            <td>{{ record.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

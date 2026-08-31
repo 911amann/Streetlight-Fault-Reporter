@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Streetlight Fault Reporter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Streetlight Fault Reporter</h1>
+    <p>Smart City Maintenance System</p>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/report">Report Fault</a>
+    <a href="/poles">Pole Tracking</a>
+    <a href="/queue">Maintenance Queue</a>
+    <a href="/areas">Area Reports</a>
+</nav>
+
+<div class="container">
+
+    <h2>Dashboard</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Reports</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Pending Repairs</h3>
+            <p>{{ pending }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Repaired</h3>
+            <p>{{ repaired }}</p>
+        </div>
+
+        <div class="card">
+            <h3>High Priority</h3>
+            <p>{{ high_priority }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Areas Covered</h3>
+            <p>{{ areas }}</p>
+        </div>
+
+    </div>
+
+    <div class="info">
+        <h2>Decision Support</h2>
+
+        <p>
+            This system analyzes streetlight fault reports and helps
+            identify priority repairs, pending maintenance and
+            area-wise fault information.
+        </p>
+
+        <a class="button" href="/report">Report a Fault</a>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

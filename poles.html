@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pole Tracking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Pole Tracking</h1>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/report">Report Fault</a>
+    <a href="/poles">Pole Tracking</a>
+    <a href="/queue">Maintenance Queue</a>
+    <a href="/areas">Area Reports</a>
+</nav>
+
+<div class="container">
+
+    <h2>Streetlight Pole Records</h2>
+
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Pole</th>
+            <th>Area</th>
+            <th>Problem</th>
+            <th>Severity</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for record in records %}
+
+        <tr>
+
+            <td>{{ record.id }}</td>
+            <td>{{ record.pole }}</td>
+            <td>{{ record.area }}</td>
+            <td>{{ record.problem }}</td>
+            <td>{{ record.severity }}</td>
+            <td>{{ record.priority }}</td>
+            <td>{{ record.status }}</td>
+
+            <td>
+
+                {% if record.status != "Repaired" %}
+
+                <a class="repair"
+                   href="/repair/{{ record.id }}"
+                   onclick="return confirmRepair()">
+                   Mark Repaired
+                </a>
+
+                {% else %}
+
+                Completed
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

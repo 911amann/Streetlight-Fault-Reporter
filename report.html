@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Streetlight Fault</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Streetlight Fault Reporter</h1>
+</header>
+
+<nav>
+    <a href="/">Dashboard</a>
+    <a href="/report">Report Fault</a>
+    <a href="/poles">Pole Tracking</a>
+    <a href="/queue">Maintenance Queue</a>
+    <a href="/areas">Area Reports</a>
+</nav>
+
+<div class="container">
+
+    <h2>Report a Streetlight Fault</h2>
+
+    {% if message %}
+        <p class="error">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+
+        <label>Pole Number</label>
+        <input type="text" name="pole" placeholder="Example: P-106" required>
+
+        <label>Area</label>
+        <input type="text" name="area" placeholder="Example: Andheri" required>
+
+        <label>Problem</label>
+        <input type="text" name="problem"
+               placeholder="Example: Light not working" required>
+
+        <label>Severity</label>
+
+        <select name="severity" required>
+            <option value="Critical">Critical</option>
+            <option value="Major">Major</option>
+            <option value="Minor">Minor</option>
+        </select>
+
+        <label>Reported By</label>
+        <input type="text" name="reported_by"
+               placeholder="Your name" required>
+
+        <label>Mobile Number</label>
+        <input type="text" name="phone"
+               placeholder="10 digit mobile number" required>
+
+        <button type="submit">Submit Report</button>
+
+    </form>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
